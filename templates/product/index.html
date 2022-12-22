@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block con %}
+
+
+
+
+
+
+  
+  {% comment %} <div class="container py-3"> {% endcomment %}
+    {% comment %} <header> {% endcomment %}
+
+      <div class="a" style="display: flex; justify-content: center; height: 800px; weight: 1200px;">
+        <div class="center">
+          <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 style="color:white;" class="display-4 fw-normal">Plan 선택</h1>
+            <h3 style="color:white;">Plan 결제가 확인되면, 전화를 통해 상세한 Plan 설정에 대한 상담 및 추가결제가 이뤄집니다. </h3>
+          </div>
+    {% comment %} </header> {% endcomment %}
+      
+            <main>
+              <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                  <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                      <h4 class="my-0 fw-normal">소매업용 Plan</h4>
+                    </div>
+                    <div class="card-body">
+                      <h1 class="card-title pricing-card-title">$10</h1>
+                      <ul class="list-unstyled mt-3 mb-4">
+                        <li>디스커버리 솔루션</li>
+                        <li>디지털 상거래</li>
+                        <li>소매업을 위한 API 관리</li>
+                        <li>데이터 웨어하우스 현대화</li>
+                        <li>Looker를 통한 소매 분석</li>
+                        <li>소매업체 고객 데이터 플랫폼</li>
+                        <li>Google Cloud 기반 SAP</li>
+                        <li>소매업을 위한 Anthos</li>
+                      </ul>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                      <h4 class="my-0 fw-normal">미디어 및 엔터테인먼트용 Plan</h4>
+                    </div>
+                    <div class="card-body">
+                      <h1 class="card-title pricing-card-title">$15</h1>
+                      <ul class="list-unstyled mt-3 mb-4">
+                        <li>가상 포스트 프로덕션</li>
+                        <li>원격 생산성 및 공동작업</li>
+                        <li>데이터 웨어하우스 현대화</li>
+                        <li>시청자 통계</li>
+                        <li>AI로 보강된 동영상 콘텐츠</li>
+                        <li>인프라 현대화</li>
+                        <li>아카이브 마이그레이션</li>
+                        <li>동영상 처리</li>
+                      </ul>
+                    
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card mb-4 rounded-3 shadow-sm ">
+                    <div class="card-header py-3 text-bg-primary `">
+                      <h4 class="my-0 fw-normal">제조업용 Plan</h4>
+                    </div>
+                    <div class="card-body">
+                      <h1 class="card-title pricing-card-title">$29</h1>
+                      <ul class="list-unstyled mt-3 mb-4">
+                        <li>고객 데이터 플랫폼</li>
+                        <li>고급 마케팅 분석</li>
+                        <li>전자상거래 마이그레이션 및 현대화</li>
+                        <li>지능형 제품</li>
+                        <li>프로덕션 품질관리</li>
+                        <li>제조업을 위한 공동작업</li>
+                        <li>제조업을 위한 하이브리드 클라우드</li>
+                        <li>제품 탐색 및 검색</li>
+                      </ul>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          {% if user.is_anonymous %}
+          <p style="color:white; font-size:50px;">Plan을 구매하실려면 로그인을 먼저해주세요 </p>
+          <a href="{% url 'Main:signin' %}" class=" btn btn-lg btn-outline-primary">로그인하러 가기</a>
+          {% else %}
+            {% if user.productnum %}
+            <a href="#" class=" doublepurchase w-100 btn btn-lg btn-outline-primary">Plan을 구매하러가기!</a>
+            {% else %}
+            <a href="{% url 'product:purchase' %}" class="w-100 btn btn-lg btn-outline-primary">Plan을 구매하러가기!</a>
+            {% endif %}
+          {% endif %}
+
+            
+          </div>
+        
+      </div>
+      
+      
+          
+        </body>
+        <script type='text/javascript'>
+
+
+          $(document).ready(function() {
+            $(".doublepurchase").on('click', function() {
+            
+                alert("현재 {{user.productnum}} 구매진행중입니다, 다른 Plan을 원하실 경우 취소 후 재구매해주세요.")
+      
+              
+            });
+          });
+        </script>
+    </div>
+
+{% endblock%}
+
+
+
+
+{% block noauth %}
+
+
+
+<div class="a" style="display: flex; justify-content: center; height: 800px; weight: 1200px;">
+  <div class="center">
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 style="color:white;" class="display-4 fw-normal">Plan 선택</h1>
+      <h3 style="color:white;">Plan 결제가 확인되면, 전화를 통해 상세한 Plan 설정에 대한 상담 및 추가결제가 이뤄집니다. </h3>
+    </div>
+{% comment %} </header> {% endcomment %}
+
+      <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">소매업용 Plan</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">$10</h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>디스커버리 솔루션</li>
+                  <li>디지털 상거래</li>
+                  <li>소매업을 위한 API 관리</li>
+                  <li>데이터 웨어하우스 현대화</li>
+                  <li>Looker를 통한 소매 분석</li>
+                  <li>소매업체 고객 데이터 플랫폼</li>
+                  <li>Google Cloud 기반 SAP</li>
+                  <li>소매업을 위한 Anthos</li>
+                </ul>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">미디어 및 엔터테인먼트용 Plan</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">$15</h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>가상 포스트 프로덕션</li>
+                  <li>원격 생산성 및 공동작업</li>
+                  <li>데이터 웨어하우스 현대화</li>
+                  <li>시청자 통계</li>
+                  <li>AI로 보강된 동영상 콘텐츠</li>
+                  <li>인프라 현대화</li>
+                  <li>아카이브 마이그레이션</li>
+                  <li>동영상 처리</li>
+                </ul>
+              
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm ">
+              <div class="card-header py-3 text-bg-primary `">
+                <h4 class="my-0 fw-normal">제조업용 Plan</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">$29</h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>고객 데이터 플랫폼</li>
+                  <li>고급 마케팅 분석</li>
+                  <li>전자상거래 마이그레이션 및 현대화</li>
+                  <li>지능형 제품</li>
+                  <li>프로덕션 품질관리</li>
+                  <li>제조업을 위한 공동작업</li>
+                  <li>제조업을 위한 하이브리드 클라우드</li>
+                  <li>제품 탐색 및 검색</li>
+                </ul>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+    {% if user.is_anonymous %}
+    <p style="color:white; font-size:50px;">Plan을 구매하실려면 로그인을 먼저해주세요 </p>
+    <a href="{% url 'Main:signin' %}" class=" btn btn-lg btn-outline-primary">로그인하러 가기</a>
+    {% else %}
+      {% if user.productnum %}
+      <a href="#" class=" doublepurchase w-100 btn btn-lg btn-outline-primary">Plan을 구매하러가기!</a>
+      {% else %}
+      <a href="{% url 'product:purchase' %}" class="w-100 btn btn-lg btn-outline-primary">Plan을 구매하러가기!</a>
+      {% endif %}
+    {% endif %}
+  
+  
+       
+    </body>
+    <script type='text/javascript'>
+
+
+      $(document).ready(function() {
+        $(".doublepurchase").on('click', function() {
+         
+            alert("현재 {{user.productnum}} 구매진행중입니다, 다른 Plan을 원하실 경우 취소 후 재구매해주세요.")
+   
+          
+        });
+      });
+    </script>
+  
+
+
+
+{% endblock %}
+

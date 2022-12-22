@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block con %}
+<body>
+  <div class="a" style="display: flex; justify-content: center; height: 900px; ">
+  <div class="center">
+    
+    <main>
+
+
+
+      {% if user.productnum %}
+
+
+      <div class="container py-4">
+        <br><br><br>
+          <header class="pb-3 mb-4 border-bottom">
+              <span class="fs-4">구매확인 및 환불</span>
+          </header>
+      
+          <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+              <h1 class="display-5 fw-bold">현재 구매 중인 솔루션</h1>
+              <p class="col-md-8 fs-4">현재 {{ user }} 고객님은 {{ user.productnum }}을 구매진행중입니다.</p>
+
+
+
+                <a href="#" class="delete btn btn-outline-dark" data-uri2="{% url 'product:product_cancel' %}">구매취소</a>
+                
+
+            </div>
+          </div>
+
+      
+      
+          </div>
+      
+
+    {% else %}
+
+
+    <div>
+      <header class="pb-3 mb-4 border-bottom">
+          <span class="fs-4"><p style="color:white; font-size:50px;">구매확인 및 환불 </p></span>
+        </a>
+      </header>
+
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">현재 {{ user }} 고객님이 구매중인 솔루션이 없습니다. </h1>
+
+        </div>
+      </div>
+
+
+
+      </div>
+
+
+    
+      {% endif %}
+
+      <footer class="pt-3 mt-4 text-muted border-top">
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+              <div class="h-100 p-5 text-bg-dark rounded-3">
+                <h2>환불절차</h2>
+                <p>환불을 신청하면 진행중이던 솔루션이 중단될 수 있습니다.
+
+                  <br><br>전액 환불의 경우 환불 절차가 완료 혹은 취소될 때까지 솔루션은 계속 중단됩니다.
+                  <br><br>카드 환불에서 카드 중 '!' 표시가 있는 건은 결제일 이후 6~18개월이 경과된 카드 결제 건입니다. 해당 건 중 카드사, PG사에 따라 자동으로 취소가 되지 않을 경우 취소가 완료될 때까지 솔루션이 중단됩니다.
+                  <br><br>카드 환불 중 통신 장애나 카드사, PG사의 사정에 따라 바로 취소가 안 되는 경우 솔루션이 중단됩니다.
+                  <br><br>카드 환불 중 차액 결제가 필요한 경우 차액 결제가 완료될 때까지 솔루션이 중단됩니다.</p>
+
+              </div>
+            </div>
+      </footer>
+    </div>
+
+
+
+
+
+    {% comment %} 
+
+
+
+    {% endcomment %}
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+  </div>
+  </div>
+</body>
+  <script type='text/javascript'>
+
+
+   $(document).ready(function() {
+     $(".delete").on('click', function() {
+      if(confirm("정말로 취소하시겠습니까?")) {
+         location.href = $(this).data('uri2');
+
+       }
+     });
+   });
+ </script>
+  {% endblock%}
+
+
+  {% block noauth %}
+  <div class="a" style="display: flex; justify-content: center; height: 800px; ">
+    <div class="center">
+      <p style="color:white; font-size:50px;"><br>로그인을 먼저해주세요 </p>
+      <div style="position:absolute; margin-left:154px;"><a href="{% url 'Main:signin' %}" class=" btn btn-lg btn-outline-primary">로그인하러 가기</a></div>
+    </div>
+  </div>
+  {% endblock %}

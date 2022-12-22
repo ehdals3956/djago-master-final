@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% block con %}
+<div class="a" style="background-color: white; color: white;">
+    <center style="padding-top:50px;margin:auto;">
+      <div>
+        <p class="fs-1">오시는 길</p> 
+        <div id="map" style="width:1000px;height:450px;"></div>
+        
+      <div>
+    </center> 
+    <hr>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04d7aa8f3427ed58c684f1757b923e6f"></script>
+    <script>
+      var container = document.getElementById('map');             //지도를 담을 영역의 DOM 레퍼런스   
+          var options = {                                             //지도를 생성할 때 필요한 기본 옵션
+            center: new kakao.maps.LatLng(37.5131, 126.9399),   //지도의 중심좌표.
+            level: 2                                                //지도의 레벨(확대, 축소 정도)
+          };
+
+          var map = new kakao.maps.Map(container, options);           //지도 생성 및 객체 리턴
+          var marker = new kakao.maps.Marker({
+            position: map.getCenter() 
+          }); 
+          marker.setMap(map);
+          kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+          var latlng = mouseEvent.latLng;
+            marker.setPosition(latlng);
+      
+          var message = '클릭한 위치의 위도는 ' + latlng.getLat(37.5131) + ' 이고, ';
+          message += '경도는 ' + latlng.getLng(126.9399) + ' 입니다';
+          
+          var resultDiv = document.getElementById('clickLatlng'); 
+          resultDiv.innerHTML = message;
+          
+      });
+  </script>
+  <div style="color:black; font-weight: bolder;">
+    <div class="card-group" style="padding-left:50px;padding-right:50px;">
+      <div class="card text-center">
+        <br><h3 class="card-title">회사 위치</h3><br>
+        <img src="/static/intro/map.png" class="card-img-top" alt="..." 
+        style="width:200px; height:150px; display: block; margin: 0 auto;">
+        <div class="card-body">
+          
+          <p class="card-text">
+            <br>
+            06928 서울 동작구 장승배기로 171
+            <br>
+            (노량진동 45-8) 노량진아이비빌딩</p>
+          
+        </div>
+      </div>
+      <div class="card">
+        <br><h3 class="card-title ; text-center">대중교통 이용 시</h3><br>
+        <img src="/static/intro/subway.png" class="card-img-top" alt="..." 
+        style="width:200px; height:150px;display: block; margin: 0 auto;">
+        <div class="card-body">         
+          <p class="card-text">
+            <span>
+            <strong>지하철</strong><br>
+             1호선,9호선 노량진역 - 5번 출구
+            <br>
+            <br></br>
+            <strong>버스</strong>  
+            <br>
+            노량진수산시장.CTS기독교TV 방향 : 광역- 9408
+            <br>
+            노량진수산시장.CTS기독교TV 방향 : 간선- 150, 260, 507, 605, 640
+            <br>  
+            노량진수산시장.CTS기독교TV 방향 : 지선- 5531, 6211, 6411, 6515
+            <br>
+            동작구청 방향 : 마을버스 - 동작02, 11
+            </span>
+          </p>
+          
+        </div>        
+      </div>
+      <div class="card text-center">
+        <br>
+        <h3 class="card-title">           
+          차량 이용 시
+        </h3>
+        <img src="/static/intro/car.png" class="card-img-top" alt="..." 
+        style="width:200px; height:150px;display: block; margin: 0 auto;">
+        <div class="card-body">
+          
+          <p class="card-text"><br>주차 가능</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <br></br><br></br>
+</div>   
+
+{% endblock %}
+
+
+{% block noauth %}
+<div class="a" style="background-color: white; color: white;">
+  <center style="padding-top:50px;margin:auto;">
+    <div>
+      <p class="fs-1">오시는 길</p> 
+      <div id="map" style="width:1000px;height:450px;"></div>
+      
+    <div>
+  </center> 
+  <hr>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04d7aa8f3427ed58c684f1757b923e6f"></script>
+  <script>
+    var container = document.getElementById('map');             //지도를 담을 영역의 DOM 레퍼런스   
+        var options = {                                             //지도를 생성할 때 필요한 기본 옵션
+          center: new kakao.maps.LatLng(37.5131, 126.9399),   //지도의 중심좌표.
+          level: 2                                                //지도의 레벨(확대, 축소 정도)
+        };
+
+        var map = new kakao.maps.Map(container, options);           //지도 생성 및 객체 리턴
+        var marker = new kakao.maps.Marker({
+          position: map.getCenter() 
+        }); 
+        marker.setMap(map);
+        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+        var latlng = mouseEvent.latLng;
+          marker.setPosition(latlng);
+    
+        var message = '클릭한 위치의 위도는 ' + latlng.getLat(37.5131) + ' 이고, ';
+        message += '경도는 ' + latlng.getLng(126.9399) + ' 입니다';
+        
+        var resultDiv = document.getElementById('clickLatlng'); 
+        resultDiv.innerHTML = message;
+        
+    });
+</script>
+<div style="color:black; font-weight: bolder;">
+  <div class="card-group" style="padding-left:50px;padding-right:50px;">
+    <div class="card text-center">
+      <br><h3 class="card-title">회사 위치</h3><br>
+      <img src="/static/intro/map.png" class="card-img-top" alt="..." 
+      style="width:200px; height:150px; display: block; margin: 0 auto;">
+      <div class="card-body">
+        
+        <p class="card-text">
+          <br>
+          06928 서울 동작구 장승배기로 171
+          <br>
+          (노량진동 45-8) 노량진아이비빌딩</p>
+        
+      </div>
+    </div>
+    <div class="card">
+      <br><h3 class="card-title ; text-center">대중교통 이용 시</h3><br>
+      <img src="/static/intro/subway.png" class="card-img-top" alt="..." 
+      style="width:200px; height:150px;display: block; margin: 0 auto;">
+      <div class="card-body">         
+        <p class="card-text">
+          <span>
+          <strong>지하철</strong><br>
+           1호선,9호선 노량진역 - 5번 출구
+          <br>
+          <br></br>
+          <strong>버스</strong>  
+          <br>
+          노량진수산시장.CTS기독교TV 방향 : 광역- 9408
+          <br>
+          노량진수산시장.CTS기독교TV 방향 : 간선- 150, 260, 507, 605, 640
+          <br>  
+          노량진수산시장.CTS기독교TV 방향 : 지선- 5531, 6211, 6411, 6515
+          <br>
+          동작구청 방향 : 마을버스 - 동작02, 11
+          </span>
+        </p>
+        
+      </div>        
+    </div>
+    <div class="card text-center">
+      <br>
+      <h3 class="card-title">           
+        차량 이용 시
+      </h3>
+      <img src="/static/intro/car.png" class="card-img-top" alt="..." 
+      style="width:200px; height:150px;display: block; margin: 0 auto;">
+      <div class="card-body">
+        
+        <p class="card-text"><br>주차 가능</p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<br></br><br></br>
+</div>   
+
+{% endblock %}
